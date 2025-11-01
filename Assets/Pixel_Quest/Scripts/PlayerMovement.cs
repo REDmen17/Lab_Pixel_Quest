@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Playerovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public int speed = 5;
+    private SpriteRenderer _spriteRenderer;
+    public float speed = 5f;
 
     // Start is called before the first frame update
     void Start()
