@@ -7,21 +7,29 @@ public class PlayerStats : MonoBehaviour
 {
 
     public string nextLevel = "Scene_2";
-    private void OnTriggerEnter2D(Collider2D other)
+    public int CoinCounter = 0;
+
+    private void OnTriggerEnter2D(Collider2D other) 
     {
-        switch (other.tag)
-        {
-            case "Death":
-                {
-                    string thislevel = SceneManager.GetActiveScene().name;
-                    SceneManager.LoadScene(thislevel);
-                    break;
+        switch (other.tag) 
+        { 
+           case "Finish": {
+                   
+                SceneManager.LoadScene(nextLevel);
+                break;
                 }
-            case "Finish":
-                {
-                    SceneManager.LoadScene(nextLevel);
+                  
+                   case "Coin":{
+
+                    CoinCounter++;
+                    Destroy(other.gameObject);
                     break;
-                }
+            }
+            case "Death": {
+                string thisLevel = SceneManager.GetActiveScene().name;
+                SceneManager.LoadScene(thisLevel);
+                break;
+            }
         }
     }
 }
